@@ -1,8 +1,9 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import Theme from '@/app/ThemeProvider';
 import './globals.css';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -15,8 +16,31 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html
+      lang="en"
+      suppressHydrationWarning
+    >
+      {/* suppressHydrationWarning: https://github.com/vercel/next.js/issues/44343 */}
+      <body
+        className={`${inter.variable} font-inter antialiased bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-200 tracking-tight`}
+      >
+        <Theme>
+          <div className="max-w-7xl mx-auto">
+            <div className="min-h-screen flex">
+              {/* <SideNavigation /> */}
+
+              {/* Main content */}
+              <main className="grow overflow-hidden px-6">
+                <div className="w-full h-full max-w-[1072px] mx-auto flex flex-col">
+                  {/* <Header /> */}
+
+                  {children}
+                </div>
+              </main>
+            </div>
+          </div>
+        </Theme>
+      </body>
     </html>
   );
 }
