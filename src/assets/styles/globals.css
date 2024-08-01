@@ -1,0 +1,10 @@
+@tailwind base;
+@tailwind components;
+
+/* Additional styles */
+@import 'utility-patterns.css';
+@import 'toggle-switch.css';
+@import 'theme.css';
+@import 'range-slider.css';
+
+@tailwind utilities;
