@@ -18,6 +18,7 @@ describe('MenuItem', () => {
 
     const { getByText, getByRole } = render(
       <MenuItem
+        id={1}
         href={href}
         icon={icon}
         text={text}
@@ -39,6 +40,7 @@ describe('MenuItem', () => {
 
     const { getByRole } = render(
       <MenuItem
+        id={1}
         href={href}
         icon={icon}
         text={text}
@@ -58,6 +60,7 @@ describe('MenuItem', () => {
 
     const { getByRole } = render(
       <MenuItem
+        id={1}
         href={href}
         icon={icon}
         text={text}
@@ -79,6 +82,7 @@ describe('MenuItem', () => {
 
     const { container } = render(
       <MenuItem
+        id={1}
         href={href}
         icon={icon}
         text={text}
