@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import Theme from '@/app/ThemeProvider';
 import '@/assets/styles/globals.css';
+import SideNavigation from '@/components/organisms/SideNavigation/SideNavigation';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -27,7 +28,7 @@ export default function RootLayout({
         <Theme>
           <div className="max-w-7xl mx-auto">
             <div className="min-h-screen flex">
-              {/* <SideNavigation /> */}
+              <SideNavigation />
 
               {/* Main content */}
               <main className="grow overflow-hidden px-6">
