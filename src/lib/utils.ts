@@ -78,3 +78,13 @@ export function flattenAttributes(data: any): any {
 
   return flattened;
 }
+
+/**
+ * Returns the Strapi URL based on the environment variable NEXT_PUBLIC_STRAPI_URL.
+ * If the environment variable is not set, it defaults to "http://127.0.0.1:1337".
+ *
+ * @returns The Strapi URL.
+ */
+export function getStrapiURL() {
+  return process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://127.0.0.1:1337';
+}
