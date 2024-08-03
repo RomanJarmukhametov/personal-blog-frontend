@@ -88,3 +88,19 @@ export function flattenAttributes(data: any): any {
 export function getStrapiURL() {
   return process.env.NEXT_PUBLIC_STRAPI_URL ?? 'http://127.0.0.1:1337';
 }
+
+/**
+ * Returns the media URL for Strapi CMS.
+ * If the URL is null, it returns null.
+ * If the URL starts with "data:", it returns the URL as is.
+ * If the URL starts with "http" or "//", it returns the URL as is.
+ * Otherwise, it appends the URL to the Strapi base URL.
+ * @param url - The URL of the media.
+ * @returns The media URL for Strapi CMS.
+ */
+export function getStrapiMedia(url: string | null) {
+  if (url == null) return null;
+  if (url.startsWith('data:')) return url;
+  if (url.startsWith('http') || url.startsWith('//')) return url;
+  return `${getStrapiURL()}${url}`;
+}
