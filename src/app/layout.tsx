@@ -32,7 +32,10 @@ export default async function RootLayout({
         <Theme>
           <div className="max-w-7xl mx-auto">
             <div className="min-h-screen flex">
-              <SideNavigation menuItems={globalData.sideNavigation.menuItem} />
+              <SideNavigation
+                menuItems={globalData.sideNavigation.menuItem}
+                logo={globalData.sideNavigation.logo}
+              />
 
               {/* Main content */}
               <main className="grow overflow-hidden px-6">
