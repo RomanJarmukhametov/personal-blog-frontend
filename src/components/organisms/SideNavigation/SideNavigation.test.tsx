@@ -10,10 +10,20 @@ vi.mock('next/navigation', () => ({
 }));
 
 describe('SideNavigation', () => {
+  const logo = {
+    url: '/uploads/me_2542f5c41c.jpg',
+    alternativeText: 'Me',
+  };
+
   it('renders the Logo component when pathname is not "/"', () => {
     vi.mocked(usePathname).mockReturnValue('/about');
 
-    const { getByAltText } = render(<SideNavigation menuItems={[]} />);
+    const { getByAltText } = render(
+      <SideNavigation
+        menuItems={[]}
+        logo={logo}
+      />
+    );
     const logoImage = getByAltText('Me');
     expect(logoImage).toBeInTheDocument();
   });
@@ -21,7 +31,12 @@ describe('SideNavigation', () => {
   it('does not render the Logo component when pathname is "/"', () => {
     vi.mocked(usePathname).mockReturnValue('/');
 
-    const { queryByAltText } = render(<SideNavigation menuItems={[]} />);
+    const { queryByAltText } = render(
+      <SideNavigation
+        menuItems={[]}
+        logo={logo}
+      />
+    );
     const logoImage = queryByAltText('Me');
     expect(logoImage).not.toBeInTheDocument();
   });
@@ -37,7 +52,12 @@ describe('SideNavigation', () => {
       { id: 5, href: '/subscribe', icon: 'subscribe', text: 'Subscribe' },
     ];
 
-    const { getByText } = render(<SideNavigation menuItems={menuItems as MenuItemProps[]} />);
+    const { getByText } = render(
+      <SideNavigation
+        menuItems={menuItems as MenuItemProps[]}
+        logo={logo}
+      />
+    );
 
     menuItems.forEach(({ text }) => {
       expect(getByText(text)).toBeInTheDocument();
@@ -55,7 +75,12 @@ describe('SideNavigation', () => {
       { id: 5, href: '/subscribe', icon: 'subscribe', text: 'Subscribe' },
     ];
 
-    const { getByRole } = render(<SideNavigation menuItems={menuItems as MenuItemProps[]} />);
+    const { getByRole } = render(
+      <SideNavigation
+        menuItems={menuItems as MenuItemProps[]}
+        logo={logo}
+      />
+    );
 
     menuItems.forEach(({ text, href }) => {
       const linkElement = getByRole('link', { name: text });
