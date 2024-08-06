@@ -41,6 +41,13 @@ export async function getGlobalData() {
           },
         },
       },
+      header: {
+        populate: {
+          link: {
+            fields: ['name', 'href'],
+          },
+        },
+      },
     },
   });
 
