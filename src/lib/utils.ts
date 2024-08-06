@@ -1,3 +1,10 @@
+import { type ClassValue, clsx } from 'clsx';
+import { twMerge } from 'tailwind-merge';
+
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs));
+}
+
 /**
  * Flattens nested Strapi API response objects by removing 'data' and 'attributes' layers,
  * making the structure simpler and more direct for client-side consumption. This function
