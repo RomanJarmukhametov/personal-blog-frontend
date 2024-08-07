@@ -1,9 +1,10 @@
 import { getGlobalData } from '@/data/loaders';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Theme from '@/app/ThemeProvider';
+import { ThemeProvider } from '@/app/theme-provider';
 import '@/assets/styles/globals.css';
 import SideNavigation from '@/components/organisms/SideNavigation/SideNavigation';
+import Header from '@/components/organisms/Header/Header';
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
 
@@ -29,7 +30,12 @@ export default async function RootLayout({
       <body
         className={`${inter.variable} font-inter antialiased bg-white text-slate-800 dark:bg-slate-900 dark:text-slate-200 tracking-tight`}
       >
-        <Theme>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
           <div className="max-w-7xl mx-auto">
             <div className="min-h-screen flex">
               <SideNavigation
@@ -40,14 +46,17 @@ export default async function RootLayout({
               {/* Main content */}
               <main className="grow overflow-hidden px-6">
                 <div className="w-full h-full max-w-[1072px] mx-auto flex flex-col">
-                  {/* <Header /> */}
+                  <Header
+                    name={globalData.header.link.name}
+                    href={globalData.header.link.href}
+                  />
 
                   {children}
                 </div>
               </main>
             </div>
           </div>
-        </Theme>
+        </ThemeProvider>
       </body>
     </html>
   );
